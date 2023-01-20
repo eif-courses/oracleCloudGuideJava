@@ -39,6 +39,10 @@ Sukurti FatJar galima įvykdyti naudojant komandą ir kelią iki šio package:
 ```
 java -jar target/spring-boot-security-postgresql-0.0.1-SNAPSHOT.jar
 ```
+arba esant projekto kataloge galima naudoti šią komandą: 
+```
+mvn spring-boot:run
+```
 Paleidus programą reikia papildomai ją uždarius į Postgres SQL duomenų bazę įdėti roles naudojant šią užklausą: 
 ```
 INSERT INTO roles(name) VALUES('ROLE_USER');
