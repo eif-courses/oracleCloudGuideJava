@@ -92,6 +92,9 @@ sudo iptables -I INPUT -p tcp -m tcp --dport 8443 -j ACCEPT
 ```
 sudo iptables-save > /etc/iptables/rules.v4
 ```
+Ingress taisyklių pridėjimo langas pavyzdys, 0.0.0.0/0 reiškia bus matomi visi IP adresai šiuo portu galima pagal situaciją leisti ir mažiau, bei nurodyti kitą portą: 
+![image](https://user-images.githubusercontent.com/8007447/213734934-a3756539-ec55-413f-b18f-48224cb51d48.png)
+
 Kad serveris būtų matomas internete viešai reikia papildomai atidaryti portus per subent ir default security. Pridėti naujas Ingress taisykles su nurodytais portais pvz. visam internetui 0.0.0.0/0 ir portas 80, 8080, 443 ir t.t..
 ![image](https://user-images.githubusercontent.com/8007447/213716539-b8531df0-409f-4f7e-ae5e-e05e8366e6c3.png)
 
