@@ -49,6 +49,37 @@ INSERT INTO roles(name) VALUES('ROLE_USER');
 INSERT INTO roles(name) VALUES('ROLE_MODERATOR');
 INSERT INTO roles(name) VALUES('ROLE_ADMIN'); 
 ```
+Linux sistemoje galima padaryti sukurtos programos Jar failą paleisti automatiškai kaip servisą: 
+# 1.Create a new file on /etc/systemd with your service name
+```
+sudo nano /etc/systemd/system/springbootapp.service
+```
+Atsidariusiame faile įvesti trūkstamą informaciją:
+```
+[Unit]
+Description=SpringBoot Service
+
+[Service]
+WorkingDirectory=/home/demo1
+ExecStart=/usr/bin/java -Xmx256m -jar /home/demo1/spring-boot-rest-postgresql-0.0.1-SNAPSHOT.jar --server.port=8081
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+```
+Visos komandos reikalingos valdyti sukurtam servisui, prieš pradedant vykdyti komandas panaudokite daemon reload:
+```
+sudo systemctl daemon-reload
+sudo systemctl enable springbootapp.service
+sudo systemctl start springbootapp.service
+sudo systemctl stop springbootapp.service
+sudo systemctl status springbootapp.service
+sudo systemctl disable springbootapp.service
+```
+
 Pasinaudojus public ip adresu, kuris yra prie oracle instance pabandyti naršyklėje suvesti adresą pvz.: 
 
 Kad serveris būtų matomas internete viešai reikia papildomai atidaryti portus per subent ir default security. Pridėti naujas Ingress taisykles su nurodytais portais pvz. visam internetui 0.0.0.0/0 ir portas 80, 8080, 443 ir t.t..
