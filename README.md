@@ -64,7 +64,7 @@ Description=SpringBoot Service
 
 [Service]
 WorkingDirectory=/home/demo1
-ExecStart=/usr/bin/java -Xmx256m -jar /home/demo1/spring-boot-rest-postgresql-0.0.1-SNAPSHOT.jar --server.port=8081
+ExecStart=/usr/bin/java -jar /home/demo1/spring-boot-security-postgresql-0.0.1-SNAPSHOT.jar
 SuccessExitStatus=143
 TimeoutStopSec=10
 Restart=on-failure
