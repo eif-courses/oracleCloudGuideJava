@@ -15,7 +15,10 @@ Diegiame maven:
 ```
 sudo apt install maven
 ```
-
+Papildomai diegiame Web serverį Apache: 
+```
+sudo apt install apache2
+```
 Diegiame duomenų bazę pvz. Postgres db: 
 ``` 
 sudo apt install postgresql postgresql-contrib
