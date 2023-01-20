@@ -82,20 +82,26 @@ sudo systemctl stop springbootapp.service
 sudo systemctl status springbootapp.service
 sudo systemctl disable springbootapp.service
 ```
-Ubuntu OS Linux komandinėje eilutėje įvesti komandą, kuri atidaro portos ir leidžia pasiekti virtualią mašiną iš viso interneto, bet papildomai reikės ir Oracle sistemoje sukurti Ingress rule: 
+Ubuntu OS Linux komandinėje eilutėje įvesti komandą, kuri atidaro portus ir leidžia pasiekti virtualią mašiną iš interneto, bet papildomai reikės ir Oracle sistemoje sukurti IP gateway vadinama Ingress rule: 
 ```
 sudo iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT
 sudo iptables -I INPUT -p tcp -m tcp --dport 443 -j ACCEPT
+sudo iptables -I INPUT -p tcp -m tcp --dport 8443 -j ACCEPT
 ```
 Įvykdžius komandas reikia išsaugoti pakeitimus: 
 ```
 sudo iptables-save > /etc/iptables/rules.v4
 ```
-
-
-Pasinaudojus public ip adresu, kuris yra prie oracle instance pabandyti naršyklėje suvesti adresą pvz.: 
-
-
-
 Kad serveris būtų matomas internete viešai reikia papildomai atidaryti portus per subent ir default security. Pridėti naujas Ingress taisykles su nurodytais portais pvz. visam internetui 0.0.0.0/0 ir portas 80, 8080, 443 ir t.t..
 ![image](https://user-images.githubusercontent.com/8007447/213716539-b8531df0-409f-4f7e-ae5e-e05e8366e6c3.png)
+
+Pasinaudojus public ip adresu, kuris yra prie oracle instance pabandyti naršyklėje suvesti adresą pvz.: 
+```
+130.162.243.125
+Realaus Web appso adresas pvz. spring boot api atrodo taip: https://130.162.243.125:8443/api/test/all
+```
+![image](https://user-images.githubusercontent.com/8007447/213732929-71d2a2a3-de05-434b-80d4-6bce000f3a1f.png)
+
+Po to galima įsigyti domain vardą ir nukreipti per A record pavyzdžiui: 
+![image](https://user-images.githubusercontent.com/8007447/213733472-8fc0e3c1-f7ca-4c97-a57a-92e60bd4ab5d.png)
+
