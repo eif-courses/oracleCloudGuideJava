@@ -34,7 +34,7 @@ Pasinaudokite komanda jeigu esate prisijungę prie CLI ekrane matysite postgres#
 ```
 Uždaryti programą galite naudodami komandą: ```\q``` ir spauskite enter.
 
-Sekantis žingsnis sukurti naują projektą arba atsisiųsti iš git jau egzistuojanti ir jį supakuoti naudojant maven komandą: 
+Sekantis žingsnis sukurti naują projektą arba atsisiųsti iš git jau egzistuojanti: (https://github.com/eif-courses/spring-boot-login-example.git) ir jį supakuoti naudojant maven komandą: 
 ```
 mvn clean package -Dmaven.test.skip=true	
 ```
