@@ -1,3 +1,9 @@
 https://mystories.vn/2017/12/24/secure-springboot-with-letsencrypt/
 
 sudo nginx -t
+
+sudo apt install certbot python3-certbot-nginx
+
+sudo certbot --authenticator standalone --installer nginx
+
+
